@@ -1,1 +1,2 @@
 # system-design-learning
+Welcome to my little corner of the internet where I try to make sense of all things system design! This repo will be packed with notes, sketches, and some code snippets to help untangle the mysteries of building big, scalable and reliable systems without losing your mind.
