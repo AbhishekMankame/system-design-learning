@@ -20,3 +20,4 @@ For example Facebook is a system that lets people connect and share.
  - A frontend app that show the UI
 - Architecture: Architecture is the overall structure and organization of the system, showing how components interact with each other
 - Load balancer: A load balancer is like a traffic cop that directs incoming requests evenly across multiple servers. So no single server gets overwhelmed.
+- API (Application Programming Interface): An API is a set of rules that allows different parts of a system (or different systems) to communicate with each other. Think on it as a waiter taking orders between a customer and the kitchen.
