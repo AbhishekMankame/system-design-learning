@@ -13,4 +13,8 @@ This is a work-in-progress, so expect it to grow and evolve-kind of like a syste
 ### Key concepts of HLD:
 
 - System: A system is a collection of components working together to perform a specific function.
-For example Facebook is a system that lets people connect and share
+For example Facebook is a system that lets people connect and share.
+- Components: A component is a smaller part of the system that has a specific responsibility
+ - A database that stores user data
+ - An API server that handles user requests
+ - A frontend app that show the UI
