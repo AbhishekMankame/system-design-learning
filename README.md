@@ -30,3 +30,7 @@ For example Facebook is a system that lets people connect and share.
 - Scalability: Ability to handle increased load (horizontal or vertical scaling)
 - Throughput: Number of requests your system can handle per unit time
 - Latency: Time taken to respond to a request
+- Cache: Temporary storage to serve repeated requests faster
+- Queue: Used for asynchronous job processing
+- Data Flow: Direction and form of data as it moves between components
+- Service: A running software unit, e.g., a microservice
