@@ -26,3 +26,7 @@ For example Facebook is a system that lets people connect and share.
     - No SQL: Stores unstructured data
 - Client: The consumer of your system (cound be a web app, mobile app, or anothe service)
 - Server: A backend component that processes data or stores information
+- Fault Tolerance: System continues working even when some parts fail
+- Scalability: Ability to handle increased load (horizontal or vertical scaling)
+- Throughput: Number of requests your system can handle per unit time
+- Latency: Time taken to respond to a request
