@@ -21,3 +21,8 @@ For example Facebook is a system that lets people connect and share.
 - Architecture: Architecture is the overall structure and organization of the system, showing how components interact with each other
 - Load balancer: A load balancer is like a traffic cop that directs incoming requests evenly across multiple servers. So no single server gets overwhelmed.
 - API (Application Programming Interface): An API is a set of rules that allows different parts of a system (or different systems) to communicate with each other. Think on it as a waiter taking orders between a customer and the kitchen.
+- Database: A database is a place where the system stores data permanently, types include:
+    - SQL database: Stores data in tables
+    - No SQL: Stores unstructured data
+- Client: The consumer of your system (cound be a web app, mobile app, or anothe service)
+- Server: A backend component that processes data or stores information
