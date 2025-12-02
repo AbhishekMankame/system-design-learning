@@ -11,4 +11,9 @@ At its core, system design solves problems at scale. Getting a feature working f
 
 ### What are system design interviews?
 Writing code becomes less central as careers progress. Companies need engineers who design systems that handle high traffic, make decisions balancing cost and performance, and lead technical discussions. System design interviews assess these capabilities.<br>
-These interviews appear at mid-level and senior positions. They increasingly appear for new graduates as well. At these levels, engineers contribute to application architecture and make design choices affecting entire systems. Interviews simulate real-world scenarios involving scalability, fault tolerance, and performance.
+These interviews appear at mid-level and senior positions. They increasingly appear for new graduates as well. At these levels, engineers contribute to application architecture and make design choices affecting entire systems. Interviews simulate real-world scenarios involving scalability, fault tolerance, and performance.<br>
+System design takes years to master. Real systems require thousands of hours of work. Demonstrating competence in 45 minutes presents a unique challenge. Candidates must know to answer and how to answer it. Most fail several interviews before understanding expectations.<br>
+
+### What System Design interviews test?
+System desing interviews test soft skills more than raw knowledge. Can you break down vauge, open-ended problems into solvable parts? Do you understand how components interact? Can you design scalable, reliable, maintainable systems?<br>
+Every design decision has trade-offs. Explain why you chose one approach over another. Communication matters as much as technical depth. Clear explanations are essential for collaborating with teams and stakeholders in real settings. System design rarely follows a straight path. Adjust your approach based on new constraints or feedback.
