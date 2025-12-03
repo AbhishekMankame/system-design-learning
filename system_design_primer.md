@@ -22,3 +22,8 @@ Every design decision has trade-offs. Explain why you chose one approach over an
 Common system design problems have been solved. Engineers developed reusable tools called components. These fit into most systems.<br>
 System design interviews test your ability to assemble components correctly. Learn how each technology works and when to use it. That's the game.<br>
 Each component section follows this structure: first, the problem it solves and when to use it. Second, how it works technically. Third, common implementations with trade-offs.
+
+### Microservices
+#### The Problem
+Services contain application code and business logic. You can structure applications as monoliths or microservices. Large-scale systems benefit from microservices.<br>
+Monolithic architecture puts all functionality in one codebase running as single process. This works for small applications but breaks at scale. Any change requires redeploying everything. A bug in one component crashes the whole system. The codebase grows harder to understand. Different components can't scale independently. <br>
