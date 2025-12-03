@@ -17,3 +17,8 @@ System design takes years to master. Real systems require thousands of hours of 
 ### What System Design interviews test?
 System desing interviews test soft skills more than raw knowledge. Can you break down vauge, open-ended problems into solvable parts? Do you understand how components interact? Can you design scalable, reliable, maintainable systems?<br>
 Every design decision has trade-offs. Explain why you chose one approach over another. Communication matters as much as technical depth. Clear explanations are essential for collaborating with teams and stakeholders in real settings. System design rarely follows a straight path. Adjust your approach based on new constraints or feedback.
+
+### Main Componenets
+Common system design problems have been solved. Engineers developed reusable tools called components. These fit into most systems.<br>
+System design interviews test your ability to assemble components correctly. Learn how each technology works and when to use it. That's the game.<br>
+Each component section follows this structure: first, the problem it solves and when to use it. Second, how it works technically. Third, common implementations with trade-offs.
