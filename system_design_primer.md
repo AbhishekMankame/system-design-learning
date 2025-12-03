@@ -27,3 +27,4 @@ Each component section follows this structure: first, the problem it solves and 
 #### The Problem
 Services contain application code and business logic. You can structure applications as monoliths or microservices. Large-scale systems benefit from microservices.<br>
 Monolithic architecture puts all functionality in one codebase running as single process. This works for small applications but breaks at scale. Any change requires redeploying everything. A bug in one component crashes the whole system. The codebase grows harder to understand. Different components can't scale independently. <br>
+Microservices break applications into smaller, independent services handling specific business functions. An e-commerece system might split into product catalog, shopping cart, user auhtentication, order processing, and payment processing services.
