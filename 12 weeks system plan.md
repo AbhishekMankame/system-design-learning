@@ -12,3 +12,21 @@ Target:
     - Concepts
     - 1-2 system designs
     - Google-style tradeoff discussion
+
+## Week 1 - System Design Fundamentals (Ground Zero)
+Learn
+- Client-Server architecture
+- HTTP vs gRPC
+- Stateless vs Stateful services
+- Load Balancers (L4 vs L7)
+
+Practice:
+- Design: URL Shortner
+    - APIs
+    - DB schema
+    - Scale to 100M URLs
+    - Cache stratergy
+
+Google Signal:
+- Clear communication
+- No overengineering
