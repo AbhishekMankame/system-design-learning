@@ -45,3 +45,32 @@ Almost always like this:
 4. Discuss trade-offs: "Why SQL over NoSQL?"
 5. Handle bottlenecks: What breaks first?
 <br> Google values structured thinking more than correctness
+
+## Step-by-Step Learning Path (Begineer Friendly)
+### Week 1: Absolute Basics
+- What is system design?
+- Client-server, REST APIs
+- SQL vs NoSQL
+- Read about:
+    - Load balancer
+    - Cache
+    - Database
+
+Goal: Be able to explain each component in simple words
+
+### Week 2: Common Patterns
+Learn these patterns:
+- Read heavy systems
+- Write heavy systems
+- Cache-aside patterns
+- Async processing (queue)
+
+### Week 3: Google-Level Practice
+Practice interview-style questions:
+- Design YouTube (hih level)
+- Design Google Drive (simplified)
+- Design search autocomplete
+
+Focus on:
+- Clear structure
+- Explaining trade-offs
