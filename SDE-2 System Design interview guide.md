@@ -74,3 +74,18 @@ Practice interview-style questions:
 Focus on:
 - Clear structure
 - Explaining trade-offs
+
+### How to answer when you're a begineer (Important)
+If you don't know something, say this:
+<pre> "I haven't worked with this at scale, but my understanding is... "</pre><br>
+Interviewer likes honesty + reasoning.
+
+### How much system design is enough?
+- 60% - 70% clarity is enough
+- Perfection is NOT required
+<br>
+
+If you can:
+- Structure answers
+- Explain choices
+- Identify bottlenecks
