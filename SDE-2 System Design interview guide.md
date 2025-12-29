@@ -36,3 +36,12 @@ You should be comfortable with these 10 things:
 10. Consistency vs Availability (basic CAP idea)
 
 <br>Note: You don't need deep theory. Just when and why.
+
+## How a Google System Design Interview Flows
+Almost always like this:
+1. Clarity requirements: Users? Scale? Read vs write heavy?
+2. High-level design: Draw boxes: Client --> Server --> DB
+3. Deep dive on 1-2 components: DB choice, cache, scaling
+4. Discuss trade-offs: "Why SQL over NoSQL?"
+5. Handle bottlenecks: What breaks first?
+<br> Google values structured thinking more than correctness
