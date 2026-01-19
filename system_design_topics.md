@@ -64,3 +64,12 @@ Replication creates copies of data to improve read scalability and fault toleran
 ### 5.3 Sharding (Partitioning)
 Sharing splits data across multiple databases. It is essential for massive scale but introducecs complexity in queries and transactions. <br>
 <pre> Golden rule: Shard by something evenly distributed (user_id)</pre>
+
+### 6 Consistency & Reliability
+### 6.1 CAP Theorm
+CAP theorem states that a distributed system can only guarantee two of Consistency, Availablity, and Partition tolerance at a time. Understanding CAP helps you justify design choices.
+<pre> Interview gold: Explain which two you choose and why </pre>
+
+### 6.2 Strong vs Eventual Consistency
+Strong consistency ensures users always see the latest data. Eventual consistency allows temporary inconsistency for better performance and availability.
+<pre> Example: Social media likes --> eventual consistency </pre>
