@@ -98,3 +98,10 @@ Authentication verifies who the user is. Authorization checks what the user is a
 ### 9.2 Rate Limiting
 Rate limiting protects systems from abuse and traffic spikes.
 <pre> Interview line: "I'll add rate limiting at the API gateway. </pre>
+
+### 10 Observability & Maintenance
+### 10.1 Logging
+Logs help debug issues and analyze behavior.
+
+### 10.2 Monitoring & Alerts
+Monitoring tracks system health and alerts engineers when something goes wrong.
