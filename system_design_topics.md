@@ -42,3 +42,12 @@ They include:
 Object storage is used for large binary files like images, videos, and documents. Instead of storing files in a database, systems store them in object storage and save references in the DB.<br>
 Examples: S3-like systems, GCS
 <pre> Interview tip: Never store large files directly in DB </pre>
+
+### 4 Caching
+### 4.1 Why Caching is Needed
+Caching stores frequently accessed data in fast storage to reduce latency and database load. Without caching, databases become bottlenecks under high read traffic.<br>
+<pre> One-liner: Cache = performance booster </pre>
+
+### 4.2 Cache Stratergies
+Common stratergies include read-through, write-through, and cache-aside. Understanding these helps you justify how data stays fresh and consistent.
+<pre> Interviewers love: Cache invaliation discussion</pre>
