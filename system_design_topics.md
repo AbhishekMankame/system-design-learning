@@ -61,6 +61,38 @@ Vertical scaling means adding more power to a single machine. Horizontal scaling
 Replication creates copies of data to improve read scalability and fault tolerance. Usually, one primary handles writes, and replicas handle reads.
 <pre> Better reads vs replication lag </pre>
 
+<pre>
+Write -> Primary Db -> Replicas (copy data)
+Read -> Replicas
+
+</pre>
+
+#### What does "Better Reads" mean?
+When we add replicas:
+- Read traffic is distributed across many DBs
+- Latency is lower
+- System can handle more users
+<br>
+
+Example:
+- Without replicas -> 1 DB handles 10k reads/sec
+- With 5 replicas -> each handles ~2k reads/sec
+- This is "Better Reads"
+- More read capacity
+- Faster response time
+- Higher availability
+
+#### What is Replication Lag?
+Replication is not instantaneous.<br>
+After a write happens on the primary:
+- It takes some time (milliseconds -> seconds) to reach replicas<br>
+During this time: 
+- Primary has new data
+- Replicas have old data<br>
+This delay is called Replication Lag
+
+<pre> Write in notebook: Replication lag = delay between primary write and replica update
+
 ### 5.3 Sharding (Partitioning)
 Sharing splits data across multiple databases. It is essential for massive scale but introducecs complexity in queries and transactions. <br>
 <pre> Golden rule: Shard by something evenly distributed (user_id)</pre>
