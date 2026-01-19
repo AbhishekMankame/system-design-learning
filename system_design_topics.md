@@ -90,3 +90,11 @@ Running multiple instances of services ensures the system remains available even
 ### 8.2 Timeouts, Retries & Circuit Breakers
 These mechanisms prevent cascading failures when downstream services are slow or unavailable.
 <pre> Senior-level thinking: Failure is normal, design for it. </pre>
+
+### 9 Security Basics
+### 9.1 Authentication & Authorization
+Authentication verifies who the user is. Authorization checks what the user is allowed to do.
+
+### 9.2 Rate Limiting
+Rate limiting protects systems from abuse and traffic spikes.
+<pre> Interview line: "I'll add rate limiting at the API gateway. </pre>
