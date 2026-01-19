@@ -105,3 +105,8 @@ Logs help debug issues and analyze behavior.
 
 ### 10.2 Monitoring & Alerts
 Monitoring tracks system health and alerts engineers when something goes wrong.
+
+### 11 Design Patterns
+- API Gateway
+- Microservices vs Monolith
+- Event-driven architecture
