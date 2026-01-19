@@ -13,3 +13,13 @@ In client-server architecture, clients (mobile/web apps) send requests to server
 APIs define how clients communicate with servers. REST APIs typically use HTTP methods like GET, POST, PUT and DELETE. Understanding APIs is important because system design interviews often ask how services communicate with each other.
 
 <pre> Interview relevance: You must explain how data flows, not just where it is stored </pre>
+
+### 2 Networking & Traffic Handling
+### 2.1 DNS (Domain Name System)
+DNS converts human-readable domain names into IP addresses. When a user types "google.com", DNS helps locate the correct server. DNS is a critical entry point in large-scale systems and is often the first step in request routing.
+<pre> Remember DNS = Internet's phonebook</pre>
+
+### 2.2 Load Balancers
+Load balancers distribute incoming traffic across multiple servers to prevent overload and improve availability. Without load balancers, one server could become a bottleneck or single point of failure.<br>
+Common stratergies include round-robin, least connections, and consistent hashing.
+<pre> Interview phrase: "I'll place a load balancer in front my application servers."
