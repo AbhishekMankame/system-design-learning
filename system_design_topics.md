@@ -51,3 +51,16 @@ Caching stores frequently accessed data in fast storage to reduce latency and da
 ### 4.2 Cache Stratergies
 Common stratergies include read-through, write-through, and cache-aside. Understanding these helps you justify how data stays fresh and consistent.
 <pre> Interviewers love: Cache invaliation discussion</pre>
+
+### 5 Scalability Concepts
+### 5.1 Vertical vs Horizontal Scaling
+Vertical scaling means adding more power to a single machine. Horizontal scaling means adding more machines. Modern systems prefer horizontal scaling because it avoids hard limits.
+<pre> Remember: Scale out, not up</pre>
+
+### 5.2 Database Replication
+Replication creates copies of data to improve read scalability and fault tolerance. Usually, one primary handles writes, and replicas handle reads.
+<pre> Better reads vs replication lag </pre>
+
+### 5.3 Sharding (Partitioning)
+Sharing splits data across multiple databases. It is essential for massive scale but introducecs complexity in queries and transactions. <br>
+<pre> Golden rule: Shard by something evenly distributed (user_id)</pre>
