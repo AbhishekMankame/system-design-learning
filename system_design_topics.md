@@ -82,3 +82,11 @@ Example: Kafka-like systems, RabbitMQ-like systems
 
 ### 7.2 Background Workers
 Workers process tasks asynchronously, such as sending emails or processing videos. This prevents long-running tasks from blocking user requests.
+
+### 8 Reliabilty & Fault Tolerance
+### 8.1 Redundancy
+Running multiple instances of services ensures the system remains available even if one instance fails.
+
+### 8.2 Timeouts, Retries & Circuit Breakers
+These mechanisms prevent cascading failures when downstream services are slow or unavailable.
+<pre> Senior-level thinking: Failure is normal, design for it. </pre>
