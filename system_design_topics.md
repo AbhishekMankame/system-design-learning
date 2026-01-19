@@ -73,3 +73,12 @@ CAP theorem states that a distributed system can only guarantee two of Consisten
 ### 6.2 Strong vs Eventual Consistency
 Strong consistency ensures users always see the latest data. Eventual consistency allows temporary inconsistency for better performance and availability.
 <pre> Example: Social media likes --> eventual consistency </pre>
+
+### 7 Asynchronous Processing
+### 7.1 Message Queues
+Queues decouple services and help handle spikes in traffic. They allow background processing and improve system resilience.<br>
+Example: Kafka-like systems, RabbitMQ-like systems
+<pre> Interview phrase: "I'll introduce a queue to smooth traffic spikes." </pre>
+
+### 7.2 Background Workers
+Workers process tasks asynchronously, such as sending emails or processing videos. This prevents long-running tasks from blocking user requests.
