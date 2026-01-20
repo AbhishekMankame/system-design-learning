@@ -38,3 +38,16 @@ At its core, system design is about making decisions that affect the overall str
 16. Monitoring and Logging: Tracking system performance and behavior to detect issues early.
 - Metrics (CPU, memory, latency)
 - Centralized logging
+17. Rate Limiting: Controlling the number of requests a user or service can make in a given time window.
+- Prevents abuse
+- Protects system stability
+18. Message Queues and Asynchronous Processing: Decoupling services by processing tasks synchronously
+- Improves scalability and reliability
+- Examples: Kafka, RabbitMQ, SQS
+19. API Design: Designing clear and consistent interfaces for communication between services.
+- REST
+- GraphQL
+- gRPC
+20. Disaster Recovery: Stratergies to restore systems and data after catastrophic failures.
+- Backups
+- Multi-region deployments
