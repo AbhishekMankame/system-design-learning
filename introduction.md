@@ -10,3 +10,16 @@ At its core, system design is about making decisions that affect the overall str
 5. Latency: The time delay before a transfer of data begins following an instruction for its transfer.
 6. Throughput: The amount of data processed by the system in a given period.
 7. Load Balancing: Distributing incoming network traffic across multiple servers to ensure no single server becomes a bottleneck.
+8. Availability: The percentage of time the system remains operational and accessible.
+- High availability systems aim for minimal downtime.
+- Often achieved using redundancy and replication.
+9. Consistency: Ensures that all users see the same data at the same time after an update.
+- Strong consistency
+- Eventual consistency
+10. CAP Theorem: States that a distributed system can only guarantee two of the following three:
+- Consistency
+- Availability
+- Partition Tolerance
+11. Caching: Storing frequently accessed data in memory to reduce latency and database load.
+- In-memory cache (Redis, Memcached)
+- CDN caching
