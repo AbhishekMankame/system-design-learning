@@ -23,3 +23,18 @@ At its core, system design is about making decisions that affect the overall str
 11. Caching: Storing frequently accessed data in memory to reduce latency and database load.
 - In-memory cache (Redis, Memcached)
 - CDN caching
+12. Database Design: Choosing the right database type and schema for the use case.
+- SQL vs NoSQL
+- Indexing and normalization
+13. Data Partitioning (Sharding): Splitting large datasets into smaller, more manageable pieces across multiple databases or servers.
+- Horizontal partitioning
+- Vertical partitioning
+14. Replication: Maintaining multiple copies of data across different nodes to improve availability and fault tolerance.
+- Leader-follower replication
+- Multi-leader replication
+15. Security: Protecting the system against unauthorized access and attacks.
+- Authentication and authorization
+- Encryption (data at rest and in transit)
+16. Monitoring and Logging: Tracking system performance and behavior to detect issues early.
+- Metrics (CPU, memory, latency)
+- Centralized logging
