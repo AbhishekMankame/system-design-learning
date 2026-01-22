@@ -79,3 +79,31 @@ Use cases:
 Trade-off:
 - Slightly slower than L4
 - Much more flexible
+
+### Types of Load Balancers (By Implementation)
+1. Hardware Load Balancers:
+- Dedicated physical devices
+- Very fast
+- Very expensive
+- Used in legacy enterprise systems
+
+2. Software Load Balancers
+- Run on standard servers
+- Highly configurable
+- Cheaper and flexible<br>
+
+Examples:
+- NGINX
+- HAProxy
+- Envoy
+- Traefik
+
+3. Cloud Load Balancers
+- Managed by cloud providers
+- Auto-scaling
+- Built-in health checks<br>
+
+Examples:
+- AWS ELB/ALB/NLB
+- GCP Load Balancer
+- Azure Load Balancer
