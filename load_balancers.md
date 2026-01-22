@@ -208,3 +208,33 @@ Solutions:
 - DNS-based failover
 - Anycast IPs<br>
 Modern systems never rely on a single LB instance
+
+### Global load balancing
+Used when users are worldwide<br>
+Techniques:
+- DNS-based routing
+- Geo-routing
+- Latency-based routing<br>
+Example
+- User in Europe --> EU servers
+- User in India --> Asia servers
+
+### Reak=l-World Example (System Design Style)
+Example: E-commerce website
+- DNS routes to cloud DB
+- LB distributes traffic to app servers
+- Health checks remove bad instances
+- Weighted least connections handles uneven traffic
+- SSL terminated at LB
+- Auto-scaling adds servers during scale<br>
+Result:
+- High availability
+- Low latency
+- Fault tolerance
+
+### Summary:
+A load balancer is the backbone of scalable systems. It:
+- Improves performance
+- Prevent failures
+- Enables horizontal scaling
+- Acts as traffic manager
