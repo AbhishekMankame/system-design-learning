@@ -175,3 +175,36 @@ Benefits
 Used in
 - Distributed caches (Redis, Memcached)
 - Some advanced load balancers
+
+### Sticky Sessions (Session Persistence)
+Sometimes users must always hit the same server.<br>
+Techniques
+- Cookies
+- IP hashing
+- Custom headers<br>
+Problem
+- Reduces load balancing effectiveness
+- Makes scaling harder<br>
+Better approach: Store session data in shared storage (Redis, DB)
+
+### Health checks (critical topic)
+Load balancers continuously check:
+- Is the server alive?
+- Is it responding correctly?<br>
+
+Types
+- Liveness check
+- Readiness check<br>
+
+Unhealthy servers:
+- Stop receiving traffic
+- Rejoin automatically when healthy
+
+### Load balancers as a single point of failure
+Ironically, a load balanecer itself can fail.<br>
+Solutions:
+- Multiple load balancers
+- Active-Passive or Active-Active setup
+- DNS-based failover
+- Anycast IPs<br>
+Modern systems never rely on a single LB instance
