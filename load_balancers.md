@@ -48,3 +48,34 @@ Unhealthy servers are removed from rotation automatically.
 - DDoS protection
 - Rate limiting
 - IP filtering
+
+### Types of Load Balancers (By Layer)
+1. Layer 4 Load Balancer (Transport Layer)<br>
+Operates at TCP/UDP level
+- Routes based on IP + Port
+- Does not inspect request content
+- Extremely fast and lightweight<br>
+Example: AWS Network Load Balancer<br>
+Use cases:
+- High throughput systems
+- Real-time apps (gaming, streaming)<br>
+Limitation:
+- Cannot route based on URL, headers, cookies
+
+2. Layer 7 Load Balancer (Application Layer)<br>
+Operates at HTTP/HTTPS level
+- Understands request content
+- Can route based on:
+    - URL path
+    - Headers
+    - Cookies
+    - HTTP method
+<br> Example: NGINX, HAProxy, AWS ALB<br>
+
+Use cases:
+- Microservices
+- APIs
+- Web applications<br>
+Trade-off:
+- Slightly slower than L4
+- Much more flexible
