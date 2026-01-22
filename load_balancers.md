@@ -134,3 +134,34 @@ Server B (weight 1)
 </pre>
 Server A gets 3x traffic compared to B<br>
 Use case: Servers with different capacities
+
+3. Least Connections: Traffic goes to the server with the fewest active connections.<pre>
+Pros
+- Good for long-lived connections
+- Handles uneven load<br>
+Cons: Slightly more overhead <br>
+Best for
+- WebSocket
+- Streaming
+- Chat systems
+
+4. Weighted Least Connections: Like least connection, but considers server capacity. <br>
+Common in production systems where machines differ.
+
+5. Least Response Time: Routes requests to the server with:
+- Lowest response time
+- Fewer active connections<br>
+Pros: Optimizes user latency<br>
+Cons:
+- More complex
+- Requires monitoring
+
+6. IP Hash: Client IP is hashed to select a server.
+<pre>
+Same IP -> Same server
+</pre>
+Pros: Session persistence without cookies<br>
+Cons:
+- Uneven distribution
+- Problems with NAT users<br>
+Best for: Session-based apps (when sticky sessions are needed)
