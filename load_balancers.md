@@ -107,3 +107,30 @@ Examples:
 - AWS ELB/ALB/NLB
 - GCP Load Balancer
 - Azure Load Balancer
+
+## Load Balancing Algorithms
+1. Round Robin: Requests are sent to servers in sequential order.
+<pre>
+Request 1 -> Server A
+Request 2 -> Server B
+Request 3 -> Server C
+</pre>
+Pros:
+- Simple
+- Even distribution<br>
+
+Cons:
+- Assmes all servers are equal
+- Ignores server load<br>
+
+Best for
+- Homogenous servers
+- Stateless applications
+
+2. Weighted Round Robin: Each server is assigned a weight::
+<pre>
+Server A (weight 3)
+Server B (weight 1)
+</pre>
+Server A gets 3x traffic compared to B<br>
+Use case: Servers with different capacities
