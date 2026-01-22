@@ -16,3 +16,35 @@ Without a load balancer:
 - Faulty servers can be isolated automatically
 - Zero-downtime deployments become possible<br>
 In large-scale systems (Netflix, Amazon, Google), load balancing is non-negotiable.
+
+### Where Load Balancers sit in architecture
+A typical request flow looks like:
+<pre>
+Client -> DNS -> Load Balancer -> Backend Servers -> Database
+</pre>
+The client never directly talks to backend servers. The load balancer:
+- Accepts the request
+- Chooses a healthy backend server
+- Forward the request
+- Return the response<br>
+In complex systems, multiple load balancers may exist:
+- DNS Load Balancer
+- Edge Load Balancer
+- Internal Service Load Balancer
+
+### Core responsibilities of a Load Balancer
+1. Traffic Distribution: Distributes requests among backend servers using specific algorithms.
+2. Health Checks: Continuously monitors backend servers using:
+- HTTP endpoints
+- TCP checks
+- Heartbeats<br>
+Unhealthy servers are removed from rotation automatically.
+3. Fault tolerance: If a server crashes:
+- Requests are rerouted instantly
+- Users usually don't notice
+4. Scalability: Adding more servers increases capacity linearly in most cases.
+5. Security:
+- SSL/TLS termination
+- DDoS protection
+- Rate limiting
+- IP filtering
