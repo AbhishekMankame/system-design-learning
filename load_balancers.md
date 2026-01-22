@@ -165,3 +165,13 @@ Cons:
 - Uneven distribution
 - Problems with NAT users<br>
 Best for: Session-based apps (when sticky sessions are needed)
+
+7. Consistent Hashing:
+- Minimizes remapping when servers are added/removed
+- Used heavily in caches and CDNs<br>
+Benefits
+- Scalability
+- Stability<br>
+Used in
+- Distributed caches (Redis, Memcached)
+- Some advanced load balancers
