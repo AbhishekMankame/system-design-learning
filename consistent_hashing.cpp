@@ -30,3 +30,30 @@ Instead:
 Interview buzzword:
 "Virtual nodes smooth load distribution."
 */
+
+#include<bits/stdc++.h>
+using namespace std;
+
+uint32_t hashFn(const string& s) {
+    return std::hash<string>{}(s);
+}
+
+// Consistent Hashing Class
+class ConsistentHash {
+private:
+    map<uint32_t, string> ring;;;
+    int virtualNodes;
+
+public:
+    ConsistentHash(int vNodes=3){
+        virtualNodes = vNodes;
+    }
+
+    void addServer(const string& serverId) {
+        for(int i=0;i<virtualNodes;i++){
+            string vnode = serverId + "#" + to_string(i);
+            uint32_t hash = hashFn(vnode);
+            ring[hash] = serverId;;
+        }
+    }
+}
