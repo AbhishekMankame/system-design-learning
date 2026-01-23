@@ -6,4 +6,27 @@ Consistent hashing is a technique to distribute keys across server such that:
 - Used in distributed caches, databases, sharded systems
 
 Key property: With 'N' servers, adding/removing one server only reassigns about '1/N' of the keys.
+
+Why Google cares:
+Interviewers expect you to understand:
+- Load balancing
+- Fault tolerance
+- Scalability
+- Real-world distributed systems (Bigtable, Spanner, GFS concepts)
+
+## Core Idea (Hash Ring)
+1. Hash values lie on a circular ring: [0, 2^32)
+2. Both servers and keys are hashed onto the ring
+3. A key goes to the first server clockwise
+
+0 -- S1 -- K1 -- S2 -- K2 -- S3 -- 2^32
+
+Virtual Nodes:
+Without virtual nodes -> uneven load
+Instead:
+- Each physical server has multiple virtual nodes
+- Each virtual node maps to the same server
+
+Interview buzzword:
+"Virtual nodes smooth load distribution."
 */
