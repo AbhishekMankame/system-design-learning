@@ -73,3 +73,31 @@ public:
         return it->second;
     }
 }
+
+int main() {
+    ConsistentHash ch(5);
+
+    ch.addServer("ServerA");
+    ch.addServer("ServerB");
+    ch.addServer("ServerC");
+
+    cout << ch.getServer("user123") << endl;
+    cout << ch.getServer("order456") << endl;
+
+    ch.removeServer("ServerB");
+
+    cout << ch.getServer("user123") << endl;
+}
+
+/*
+Time and Space Complexity::
+addServer --> O(V log N)
+removeServer --> O(V log N)
+getServer --> O(log N)
+Space --> O(N*V)
+
+Where:
+N = number of server
+V = virtual nodes per server
+
+*/
