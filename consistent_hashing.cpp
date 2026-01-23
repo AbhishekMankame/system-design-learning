@@ -53,7 +53,23 @@ public:
         for(int i=0;i<virtualNodes;i++){
             string vnode = serverId + "#" + to_string(i);
             uint32_t hash = hashFn(vnode);
-            ring[hash] = serverId;;
+            ring[hash] = serverId;
         }
+    }
+
+    void removeServer(const string& serverId){
+        for(int i=0;i<virtualNodes;i++){
+            string vnode = serverId + "#" + to_string(i);
+            uint32_t hash = hashFn(vnode);
+            ring.erase(hash);
+        }
+    }
+
+    string getServer(const string& key){
+        if(ring.empty()) return "";
+        uint32_t hash = hashFn(key);
+        auto it = ring.lower_bound(hash);
+        if(it==ring.end()) it=ring.begin(); // wrap around
+        return it->second;
     }
 }
