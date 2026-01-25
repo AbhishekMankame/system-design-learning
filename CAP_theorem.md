@@ -24,3 +24,14 @@ Example:
 Example:
 - A network split occurs between data centres. The system must continue to accept reads/writes in both partitions, even if the nodes cannot communicate with each other temporarily.
 - Partition tolerance = system can handle network failures.
+
+### The trade-off: Choose 2 out of 3
+The CAP theorem says:
+<pre>You cannot have all three: consistency, availability and partition tolerance simultaneously in a distributed system.</pre>
+So, when designing systems, we pick two out of three:
+
+| Combination | What it Mean | Use Cases |
+| ----------- | ------------ | --------- |
+| CA | Consistent & Available (no network partitions) | Single-datacenter systems: SQL DBs like MySQL when network is reliable |
+| CP | Consistent & Partition Tolerant | Banking, financial systems where consistency is critical, even if some availability is sacrificed |
+| AP | Avai;able & Parition Tolerant | Social media, DNS, caching systems where some stale data is acceptable |
