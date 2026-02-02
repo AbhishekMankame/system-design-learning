@@ -15,3 +15,23 @@ Key features:
 - JSON/JSONB storage for semi-structured data
 - Full-text search
 - Paritioning, indexing, and parallel query execution
+
+## PostgreSQL Architecture
+Understanding architecture is crucial for interviews and repo documentation. PostgreSQL is a client-server system:
+### Process Architecture
+- Postmaster: Main server process managing connections.
+- Backend processes: One per client connection.
+- Auxilliary processes:
+    - Autovaccum: Cleans up dead tuples.
+    - Checkpointer: Writes dirty pages to disk.
+    - WAL writer: Handles Write-Ahed Logging.
+
+### Storage Architecture
+- Tablespaces: Logical storage locations.
+- Data Files: Store tables, indexes, and transaction logs.
+- WAL (Write-Ahead Log): Ensures durability (crash recovery)
+
+### MVCC (Multi-Version Concurrency Control)
+- Each transaction sees a snapshot of the database.
+- Writers don't block readers.
+- Dead tuples are cleaned up by VACCUM.
