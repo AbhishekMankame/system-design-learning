@@ -15,3 +15,10 @@
     - RedisJSON
     - RedisAI
     - Redis TimeSeries
+
+### Challenges of multiple data services
+- Data services need to be deployed and maintained
+- Know-How needed for each service
+- Different Scaling and Infratructure Requirements
+- Due to multiple microservices connected or talking to each service and seperate logic and due to more number of services there will be high latency.
+- Here each network hop will create latency.
