@@ -33,3 +33,17 @@
 - As an inmemory database Redis is super fast and performant.
 - Redis also makes running application test faster as well
 - Schemaless
+
+### Data Persistance and Durability
+Redis has multiple mechanisms for persisting the data and keeping the data safe.
+- Snapshotting (RBD)
+    - Produces single-file point-in-time snapshots of your dataset
+    - Configure based on time or number of writes passed
+    - Stored on disk
+    - Great for backups and disaster recovery
+    - You may lost the latest minute of data
+
+- Append Only File (AOF)
+    - Logs every write operation continuously
+    - When restarting Redis, it will re-play the AOF to rebuild the state
+    - Much more durable, but can be slower then RDB
