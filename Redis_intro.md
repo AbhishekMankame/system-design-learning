@@ -21,6 +21,18 @@
 - Despite being single-threaded, Redis achieves extrememly high performance using non-blocking I/O and event-driven architecture (epoll/kqueue).
 - Most Redis operations have O(1) or O(log n) time complexity. To prevent unbounded memory growth, Redis supports TTL (time-to-leave) on keys and configurable eviction policies such as LRU (Least Recently Used) and LFU (Least Frequently Used). These features are critical in cache-heavy, high-traffic systems.
 
+### Redis in Typical System Design (Diagram)
+
+<pre>
+
+Clients --> Application Servers --> Redis (Cache/Lock/Rate Limiter/Pub-sub) --> Database (Persistent Storage)
+</pre>
+
+Flow (Cache-Aside Pattern):
+1. Application checks Redis for data
+2. If cache hit -> return immediately
+3. If cache miss -> fetch from DN, store in Redis, return
+
 ### Challenges of multiple data services
 - Data services need to be deployed and maintained
 - Know-How needed for each service
