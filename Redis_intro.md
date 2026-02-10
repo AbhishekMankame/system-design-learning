@@ -16,6 +16,11 @@
     - RedisAI
     - Redis TimeSeries
 
+- In large-scale systems Redis is typically placed between application servers and persistent databases to reduce database load and improve response time.
+- From an internal design perspective, Redis is single-threaded for command execution, which is a deliberate architectural choice. This design avoids race conditions and eliminates the need for complex locking mechanism, ensuring that all operations are atomic.
+- Despite being single-threaded, Redis achieves extrememly high performance using non-blocking I/O and event-driven architecture (epoll/kqueue).
+- Most Redis operations have O(1) or O(log n) time complexity. To prevent unbounded memory growth, Redis supports TTL (time-to-leave) on keys and configurable eviction policies such as LRU (Least Recently Used) and LFU (Least Frequently Used). These features are critical in cache-heavy, high-traffic systems.
+
 ### Challenges of multiple data services
 - Data services need to be deployed and maintained
 - Know-How needed for each service
