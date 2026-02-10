@@ -47,3 +47,39 @@ Redis has multiple mechanisms for persisting the data and keeping the data safe.
     - Logs every write operation continuously
     - When restarting Redis, it will re-play the AOF to rebuild the state
     - Much more durable, but can be slower then RDB
+
+- Best: Use both persistence options
+    - Redis actually plans to unify AOF and RDB
+    - AOF: Persisting all operations one after the other
+    - RDB: Regular snapshots for DB backups
+    - Even if Redis database itself or the servers with underlying infrastructure were Redis is running fails, we still have all our database safe, and we can easily recreate and restart the database with all the data.<br>
+
+### Where are these persistence files stored?
+- Always seperate the persistent storage from Data server.
+<pre> Server, where DB service runs     Server, where your data is backed up </pre>
+
+### Storing data in memory expensive?
+- We need more servers compared to disk-based databases, means we need more servers compared to database that stores data on disk, simply because memory in limited in size, that's the trade-off between cost and performance.
+- Redis actually have a way to optimize this, that is called Redis on Flash (which is a part of Redis Enterprise)
+- Redis on Flash extends the RAM to the flash drive or SSD, where frequenty used values (hot values) are stored in RAM and infrequently used values (warm values) are stored on SSD.
+- So for Redis, it is more RAM-like (latency & performance) on the server.
+- Redis can use more of the underlying infrastructure resources.
+- Lower infrastruture costs
+
+### How to scale a Redis Database?
+#### How to increase the capacity?
+1. Clustering
+- We have primary (or master) redis instance for reading and writing
+- And we can have multiple replicas for reading
+- This way we can scale Redis to handle more requests and increase the high availability of database as if master fails, then one of the replicas can take over and then your database can continue functioning without any issues.
+- Replicas hold complete copies of Primary instance's data
+- Using one Server for your Redis cluster
+    - More replicas, the more memory space
+    - Downtime when server crashes
+- Distribute the replicas among the nodes/servers, that means master instance will be on one node and replicas will be on different nodes.
+- Here, if our dataset grows to large to fit in the memory on a single server
+
+### Sharding
+Here in sharding we take our complete datasets and divide it into smaller chunks or subsets of data were each shard is responsible for it's own subset of data.
+- That means instead of having one master instance which handles all the write through the complete dataset, you can split it into 4 shards (any 'n' number of shards, 4 in this case for example) each of them responsible for reads and writes to a subset of the data and each shard also needs less memory capacity because they just have one-fourth of the data, this means you can distribute and run shards on smaller nodes and basically scale your cluster horizontally.
+- If your dataset grows, you can re-shard it into smaller chunks and create more shards.
