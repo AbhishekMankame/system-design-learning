@@ -83,3 +83,15 @@ Redis has multiple mechanisms for persisting the data and keeping the data safe.
 Here in sharding we take our complete datasets and divide it into smaller chunks or subsets of data were each shard is responsible for it's own subset of data.
 - That means instead of having one master instance which handles all the write through the complete dataset, you can split it into 4 shards (any 'n' number of shards, 4 in this case for example) each of them responsible for reads and writes to a subset of the data and each shard also needs less memory capacity because they just have one-fourth of the data, this means you can distribute and run shards on smaller nodes and basically scale your cluster horizontally.
 - If your dataset grows, you can re-shard it into smaller chunks and create more shards.
+
+### Active-Active Geo Distribution
+- Lower latency
+- Disaster recovery
+- Redis cluster can update data independently
+- Once connection is re-established, they can sync up the changes.
+
+### How does Redis resolve changes to the same dataset?
+### How does Redis ensure data consistency?
+- Redis Enterprise uses something called CRDT (Conflict-Free Replicated Data Types): This is used to resolve any conflicts at database level and without any data loss.
+- Redis itself has the mechanism for merghing the changes which were made to the same dataset from multiples sources in a way that none of the data changes are lost, and any conflicts are properly resolved.
+- For each datatype, it has its own data conflict resolution rule, the most optimal for that particular data type.
