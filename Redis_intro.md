@@ -95,3 +95,8 @@ Here in sharding we take our complete datasets and divide it into smaller chunks
 - Redis Enterprise uses something called CRDT (Conflict-Free Replicated Data Types): This is used to resolve any conflicts at database level and without any data loss.
 - Redis itself has the mechanism for merghing the changes which were made to the same dataset from multiples sources in a way that none of the data changes are lost, and any conflicts are properly resolved.
 - For each datatype, it has its own data conflict resolution rule, the most optimal for that particular data type.
+- All the parallel changes are intelligently resolved.
+
+### Running Redis in Kubernetes
+- Running Redis on Kubernetes platform is very interesting and common usecase.
+- With open source Redis, you can deploy your replicated Redis as Helm Chart or K8s manifest files using the Replication and Scaling rules, setup and run a highly available Redis database.The only difference will be that the hosts where Redis will run will be Kubernetes pods instead of for example EC2 instances or any other physical or virtual servers.
