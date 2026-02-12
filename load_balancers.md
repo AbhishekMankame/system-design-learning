@@ -238,3 +238,12 @@ A load balancer is the backbone of scalable systems. It:
 - Prevent failures
 - Enables horizontal scaling
 - Acts as traffic manager
+
+### Difference between L4 Load Balancer and L7 Load Balancer
+| Aspect | L4 Load Balancer | L7 Load Balancer |
+| ------- | -------- | ---------- |
+| OSI Layer | Layer 4 - Transport | Layer 7 - Application |
+| Routes based on | IP address + Port | HTTP/HTTPS content |
+| Understands HTTP? | No | Yes |
+| Speed | Faster | Slightly slower |
+| Intelligence | Simple | Smart routing |
