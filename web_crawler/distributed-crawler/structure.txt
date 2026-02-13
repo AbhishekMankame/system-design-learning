@@ -1,0 +1,24 @@
+distributed-crawler/
+│
+├── docker-compose.yml
+│
+├── nginx/
+│   └── nginx.conf
+│
+├── seed_service/
+│   ├── app.py
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── frontier_service/
+│   ├── app.py
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── worker_service/
+│   ├── worker.py
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+└── shared/
+    └── config.py
