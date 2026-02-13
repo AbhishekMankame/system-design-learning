@@ -96,3 +96,46 @@ Solutions:
 - Redis
 - Bloom Filter (large scale)
 - Distributed key-value store
+
+4. Politeness & Rate Limiting<br>
+We must:
+- Respect robots.txt
+- Avoid hitting same domain too fast
+- Add delay per domain
+
+5. Storage<br>
+Options:
+- Store raw HTML
+- Store parsed data
+- Store metadata <br>
+
+Use:
+- S3
+- HDFS
+- Cassandra
+- Elasticsearch
+
+5. Database Schema Example:<br>
+URLs Table
+| Field | Type |
+| ----- | ---- |
+| id | bigint |
+| url | text |
+| status | enum |
+| crawled_at | timestamp |
+| content_hash | string |
+
+6. Scaling Stratergy<br>
+For Google-scale crawling:
+- Distributed Crawler
+       - Use consistent hashing to assign domains
+       - Partition by hostname
+       - Use multiple machines
+       - Central coordinator
+
+- Architecture Upgrade:
+       - Distributed queue (Kafka)
+       - URL dedupe service
+       - Worker autoscaling
+       - Monitor system
+       - Checkpointing
