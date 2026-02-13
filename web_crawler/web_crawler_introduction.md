@@ -139,3 +139,6 @@ For Google-scale crawling:
        - Worker autoscaling
        - Monitor system
        - Checkpointing
+
+### Big Picture:
+Seed URLs --> URL Frontier --> Crawler Workers --> Throttling --> Dedupe Service --> Storage (S3/HDFS) -> Metadata DB (Cassandra) --> Search Index (Elasticsearch)
