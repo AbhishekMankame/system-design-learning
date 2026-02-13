@@ -31,3 +31,68 @@ A web crawler (spider/bot) is a program that:
 - High throughput
 - Fault tolerance
 - Distributed
+
+### High-Level Architecture
+
+            +----------------+
+            |   Seed URLs    |
+            +--------+-------+
+                     |
+                     v
+            +----------------+
+            |   URL Frontier |
+            | (Queue System) |
+            +--------+-------+
+                     |
+         +-----------+-----------+
+         |                       |
+         v                       v
+  +-------------+        +-------------+
+  |  Crawler    |        |  Crawler    |
+  |  Worker 1   |        |  Worker N   |
+  +------+------+        +------+------+
+         |                       |
+         v                       v
+  +-------------------------------------+
+  |     Page Parser & Link Extractor    |
+  +-------------------------------------+
+                     |
+                     v
+         +--------------------------+
+         |  Duplicate URL Checker   |
+         | (Bloom Filter / DB)      |
+         +--------------------------+
+                     |
+                     v
+         +--------------------------+
+         | Storage (DB / S3 / HDFS) |
+         +--------------------------+
+
+### Core Components Explained
+
+1. URL Frontier (Queue) - Stores URLs to crawl<br>
+Can use:
+- Kafka
+- RabbitMQ
+- Redis Queue<br>
+
+Must support:
+- Priority
+- Domain-based throttling
+- Deduplication
+
+2. Crawler Workers<br>
+Each worker:
+1. Takes URL from queue
+2. Downloads page
+3. Parses content
+4. Extracts links
+5. Adds new URLs to queue
+
+3. Duplicate URL Detection<br>
+Without this, crawlers loops infinitely.<br>
+Solutions:
+- Hashset (small scale)
+- Redis
+- Bloom Filter (large scale)
+- Distributed key-value store
