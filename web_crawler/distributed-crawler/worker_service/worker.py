@@ -2,40 +2,32 @@ import asyncio
 import aiohttp
 import redis
 import os
-import asyncpg
 from bs4 import BeautifulSoup
+from db import Database
 from shared.config import *
 
-redis client = redis.Redis(host=os.getenv("REDIS_HOST"),post=6379)
+redis_client = redis.Redis(host=os.getenv("REDIS_HOST"), port=6379)
 
-async def fetch(session,url):
+db = Database()
+
+async def fetch(session, url):
     try:
-        async with session.get(url,timeout=10) as response:
+        async with session.get(url, timeout=10) as response:
             return await response.text()
     except:
         return None
 
-async def save_to_db(conn,url,content):
-    await conn.execute(
-        "INSERT INTO pages(url,content) VALUES($1,$2)",
-        url, content
-    )
-
-async def extract_links(html, base_url):
+def extract_links(html):
     soup = BeautifulSoup(html, "html.parser")
-    return [a.get("href") for a in soup.find_all("a",href=True)]
+    return [a.get("href") for a in soup.find_all("a", href=True)]
 
 async def worker():
-    conn = await asyncpg.connect(
-        user="crawler",
-        password="crawler",
-        database="crawlerdb",
-        host=os.getenv("POSTGRES_HOST")
-    )
+    await db.connect()   # 🔥 connect once
 
     async with aiohttp.ClientSession() as session:
         while True:
             url = redis_client.rpop(QUEUE_NAME)
+
             if not url:
                 await asyncio.sleep(1)
                 continue
@@ -46,9 +38,11 @@ async def worker():
             if not html:
                 continue
 
-            await save_to_db(conn, url, html)
+            # ✅ Save to DB
+            await db.save_page(url, html)
 
-            links = await extract_links(html, url)
+            # Extract and enqueue new URLs
+            links = extract_links(html)
             for link in links:
                 if not redis_client.sismember(VISITED_SET, link):
                     redis_client.lpush(QUEUE_NAME, link)
