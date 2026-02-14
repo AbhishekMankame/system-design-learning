@@ -1,0 +1,4 @@
+aiohttp
+redis
+beautifulsoup4
+asyncpg
