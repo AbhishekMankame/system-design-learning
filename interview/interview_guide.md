@@ -27,3 +27,8 @@
 4. Latency, Throughput and Performance
 5. Fault tolerance and Redundancy
 6. CAP Theorem
+
+### Recommended problems by "Hello Interview" (in the order)
+<pre>
+Bitly/TinyURL --> Dropbox --> Ticketmaster/BookMyShow --> News feed --> Whatsapp --> Leetcode --> Uber --> Web Crawler --> Ad click aggregator --> Post search
+</pre>
