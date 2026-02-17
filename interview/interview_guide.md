@@ -32,3 +32,5 @@
 <pre>
 Bitly/TinyURL --> Dropbox --> Ticketmaster/BookMyShow --> News feed --> Whatsapp --> Leetcode --> Uber --> Web Crawler --> Ad click aggregator --> Post search
 </pre>
+
+Reference blog --> https://devshreebharatia.substack.com/p/system-design-roadmap-for-beginners
