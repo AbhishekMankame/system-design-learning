@@ -35,3 +35,19 @@ So, when designing systems, we pick two out of three:
 | CA | Consistent & Available (no network partitions) | Single-datacenter systems: SQL DBs like MySQL when network is reliable |
 | CP | Consistent & Partition Tolerant | Banking, financial systems where consistency is critical, even if some availability is sacrificed |
 | AP | Avai;able & Parition Tolerant | Social media, DNS, caching systems where some stale data is acceptable |
+
+### Why you can't have all three?
+Imagine:
+- Two database nodes: Node A and Node B.
+- A network partition occurs between them.
+- You write new data to Node A.<br>
+
+Now:<br>
+If Node B receives a read request, it must choose:
+| Option | What It Does | What It Sacrifices |
+| ------ | ------------ | ------------------ |
+| Return old data | System stays available | Breaks Consistency |
+| Refusen to respond | Preserves Consistency | Breaks Availability |
+
+Therefore: During a partition, you must choose between Consistency and Availability.<br>
+That's the CAP tradeoff.
