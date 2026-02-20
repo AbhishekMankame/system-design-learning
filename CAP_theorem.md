@@ -72,3 +72,17 @@ Many AP system use: <b>Eventual Consistency</b>
 This model powers:
 - Social networks
 - Large-scale cloud systems
+
+### Real-World Example
+- Online Banking (CP)
+    - You transfer $100
+    - System must ensure:
+        - No double spending
+        - No inconsistent balance
+    - If network splits -> better to reject transaction than allow inconsistency
+
+- Instagram Feed (AP)
+    - If one server fails
+    - You may see slightly old posts
+    - But the app still loads
+    - Here availability is more important than strict consistency
