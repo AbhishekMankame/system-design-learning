@@ -51,3 +51,24 @@ If Node B receives a read request, it must choose:
 
 Therefore: During a partition, you must choose between Consistency and Availability.<br>
 That's the CAP tradeoff.
+
+### Important Clarifications
+1. Partition Tolerance is Mandatory<br>
+In real distributed system:
+- You cannot choose "not P"
+- Network failures will happen<br>
+So the real tradeoff is:
+<pre> During partition -> Choose C or A</pre>
+
+2. CAP Only Applies During Partition<br>
+If there is no network failure:
+- You can have both consistency and availability<br>
+CAP only becomes relevant when partition occurs.
+
+3. Eventual Consistency<br>
+Many AP system use: <b>Eventual Consistency</b>
+- Data will become consistent over time.
+- No guarantee of immediate consistency.<br>
+This model powers:
+- Social networks
+- Large-scale cloud systems
