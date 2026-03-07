@@ -19,3 +19,11 @@ Order Service -> Message Queue -> Payment Service
 
 </pre>
 The queue ensures that messages are delivered reliably and processed even if some services are temporarily busy or unavailable.
+
+### Popular Message Queue Systems
+Examples include:
+- Apache Kafka
+- RabbitMQ
+- Amazon Simple Queue Service
+- ActiveMQ<br>
+A message queue allows different parts of a system to communicate asynchronously, reliably and independently.
