@@ -1,0 +1,3 @@
+## Database Replication
+Database replication is a process where data from one database server (the master or primary) is copied to one or more other database servers (the replica or secondary).<br>
+This allows for high availability, load balancing and backup recovery. There are several ways to implement replication, depending on the database system (like MySQL, PostgreSQL, etc.) and your use case (synchronous vs asynchronous, master-slave, master-master).
