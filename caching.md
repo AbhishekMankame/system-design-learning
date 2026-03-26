@@ -19,10 +19,10 @@ Let's look at the main places you can cache data, why each one exists, and when 
 An external cache is a standalone cache service that your application talks to over the network. This is what most people think of when they head caching. You store frequently accessed data in something like 'Redis' or 'Memcached' so you do not have to hit the database every time.
 
 <pre>
-Client ----> Application Servers ---- 1. Check cache ----> Cache
-                                   |
-                                   |
-                                   --- 2. Read from DB as fallback ----> Database
+Client <----> Application Servers <---- 1. Check cache ----> Cache
+                            ^
+                            |
+                            --- 2. Read from DB as fallback ----> Database
 
 </pre>
 External caches scale well because every application server can share the same cache. They also support eviction policies like LRU and expiration via TTL so your memory footprint stays controlled.<br>
@@ -45,3 +45,14 @@ How it works:
 Without a CDN, every image request travels to your origin. If your server is in Virginia and the user is in India, that adds 250-300ms of latency per request. With a CDN, the same image is server from a nearby edge server in 20-40ms. That is massive performance difference.
 
 <pre> Even though modern CDNs can cache API responses and dynamic content, in system design interviews the safest time to introduce a CDN is when your system serves static media at scale. Start with that reason first, then expand only if the problem calls for more.</pre>
+
+### Client-Side Caching
+Client-Side caching stores the data close to the requester to avoid unnecessary network calls. This usually means the user's device, like a browser (HTTP cache, localStorage) or mobile app using local memory or on-device storage.<br>
+
+But it can also mean caching within a client library For example, Redis clients cache cluster metadata like which nodes are in the cluster and which slots are assigned to them. That way, the client can route requests directly to the right node without querying the cluster on every operation.<br>
+
+For user-facing caching, you have limited control from the backend. Data can go stale and invalidation is harder. The 'Strava app' keeps your run data on the disk while you are offline and syncs it later. A browser reusing a previously downloaded image from disk is also caching.
+
+<pre>
+Client (It has cache) <---> Application Servers <---> Databse
+</pre>
