@@ -28,3 +28,20 @@ Client ----> Application Servers ---- 1. Check cache ----> Cache
 External caches scale well because every application server can share the same cache. They also support eviction policies like LRU and expiration via TTL so your memory footprint stays controlled.<br>
 
 - VV IMP Note: In system design interviewers, external caching with Redis is the default answer when discussing caching stratergies. Interviewers expect you to mention it for any high-traffic system. Start here, then layer on other caching types such as CDN or client-side caching only if the problem calls for them.
+
+
+### CDN (Content Delivery Network)
+A CDN is a geographically distributed network of servers that caches content close to users. Instead of every request travelling to your original server, a CDN stores copies of your content at edge servers around the world.
+<pre> Modern CDNs like Clourflare, Fastly and Akamai can cache much more than static files. They can also cache public API responses, HTML pages, and even run edge logic to personalize content or enforce security rules before requests reach your servers. But the most common and most impactful use of a CDN is still media delivery.</pre>
+
+How it works:
+1. A user requests an image from your app.
+2. The request goes to the nearest CDN edge server.
+3. If the image is cached there, it returned immediately.
+4. If not, the CDN fetches it from your origin server, stores it, and returns it.
+5. Future users in that region get the image instantly from the CDN.
+<br>
+
+Without a CDN, every image request travels to your origin. If your server is in Virginia and the user is in India, that adds 250-300ms of latency per request. With a CDN, the same image is server from a nearby edge server in 20-40ms. That is massive performance difference.
+
+<pre> Even though modern CDNs can cache API responses and dynamic content, in system design interviews the safest time to introduce a CDN is when your system serves static media at scale. Start with that reason first, then expand only if the problem calls for more.</pre>
