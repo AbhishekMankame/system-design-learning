@@ -56,3 +56,27 @@ For user-facing caching, you have limited control from the backend. Data can go 
 <pre>
 Client (It has cache) <---> Application Servers <---> Databse
 </pre>
+
+### In-Process Caching
+Most candiditaes, and engineers, overlook the fact that servers run on machines with a lot of memory. As hardware improves, this becomes increasingly true. You can use that memory to cache data directly inside the application process instead of always calling out to Redis or the database.<br>
+
+The idea is simple: if your service keeps requesting the same small piece of data again and again, store them in a local cache inside the process. Reads from local memory are even faster than reads from Redis because they avoid any network call.<br>
+
+This light-weight form of caching makes sense for small pieces of data that are requested frequently like:
+- Configuration values
+- Feature flags
+- Small reference datasets
+- Hot keys
+- Rate limiting counters
+- Precomputed values
+
+<pre>
+
+Client ----> Application Servers (With cache) ----> Database
+</pre>
+
+In-process caching is blazing fast, but it comes with obvious limitations. Each instance of your application has its own cache, so cached data is not shared across servers. If one instance updates or invalidates a cached value, the others will not know.
+
+<pre>
+Note: Use in-process caching for small, freqently accessed values that rarely change. It is great for speed but not a replacement for Redis. In system design interviews, mention this only as an <b>optimization layer</b> after you have already introduced an external cache.
+</pre>
