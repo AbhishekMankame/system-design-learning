@@ -1,4 +1,4 @@
-## Caching
+# Caching
 
 In system design interviews, caching comes up almost everytime you need to handle high read traffic. Your database becomes bottleneck, latency starts creeping up, and the interviewer is waiting for you to say the word: cache.<br>
 
@@ -80,3 +80,23 @@ In-process caching is blazing fast, but it comes with obvious limitations. Each 
 <pre>
 Note: Use in-process caching for small, freqently accessed values that rarely change. It is great for speed but not a replacement for Redis. In system design interviews, mention this only as an <b>optimization layer</b> after you have already introduced an external cache.
 </pre>
+
+## Cache Architectures
+Not all caching works the same way. How you read from and write to the cache changes performance, consistency, and complexity.<br>
+These are the four core cache patterns you should know for system design interviews.
+
+### Cache-Aside (Lazy Loading)
+This is the most common caching pattern and the one you should default to in interviews.<br>
+How it works:
+1. Application checks the cache.
+2. If the data is there, return it.
+3. If not, fetch from the database, store it in the cache, and return it.<br>
+Cache-aside only caches data when needed, which keeps the cache lean. The downside is that a cache miss cause extra latency.
+<pre>
+Very Very Important Note: <b> If you only remember one caching pattern for interviews, make it cache-aside.</b>
+</pre>
+
+### Write-Through Caching
+With write-through caching, the application writes only to the cache. The cache then synchronously writes to the database before returning to the application. The write operation does not complete until both the cache and database are updated.<br>
+
+In practice, this requires a cache implementation that supports write-through, like a caching library with a data store plugin. Where you write to the cache, the library handles calling your database write logic before acknowledging the write. Redis itself does not natively support write through, so you need application code or a framework to implement this pattern.
