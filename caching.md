@@ -126,3 +126,26 @@ This centralizes caching logic but adds complexity and usually requires a specia
 CDNs are a form of read-through cache. When a CDN gets a cache miss, it fetches from your origin server, caches the result, and returns it. But for application-level caching with Redis, cache-aside is far more common. <br>
 
 Generally speaking, there are very few reasons to propose this pattern in system design interviews unless you're discussing CDNs or similar infrastructure.
+
+## Cache Eviction Policies:
+Caches have limited memory, so they need a stratergy for deciding which entries to remove when full. These stratergies are called cache eviction policies.
+
+### LRU (Least Recently Used)
+LRU evicts the item that has not been accessed for the longest time. It tracks access order using a linked list or ring buffer so the least recently used item can be removed in constant time.<br>
+
+It is the default in many systems because it adapts well to mos workloads where recently used data is likely to be used agin.
+
+### LFU (Least Frequently Used)
+LFU evicts the item that has been accessed the least. It maintains a counter for each key and removes the one with the lowest frequency. Some implementations use approximate LFU to avoid the cost of precise frequency tracking. <br>
+
+This works well when certain keys are consistently popular over time, like trending videos or top playlists.
+
+### FIFO (First In First Out)
+FIFO evicts the oldest item in the cache based only on insertion time. It can be implemented with a simple queue, but it ignores usage patterns. <br>
+
+Because it may evict items that are still hot, it is rarely used in real systems beyond simple caching layers.
+
+### TTL (Time To Live)
+TTL is not an eviction policy by itself. Instead, it sets an expiration time for each key and removes entries that are too old. It is often combined with LRU or LFU to balance freshenss and memory usage. <br>
+
+TTL is a must havve when data must eventually refresh, like API responses or sessions tokens.
