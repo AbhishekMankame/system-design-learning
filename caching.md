@@ -108,3 +108,21 @@ Write through still suffers from the dual-write problem. If the cache update suc
 In system design interviews, write-through is less common than cache-aside because it requires specialized caching infrastructure and still has consistency edge cases. <br>
 
 Use this when <b>reads must always return fresh data</b> and your system can tolerate slightly slower writes.
+
+### Write-Behind (Write-Back) Caching
+With write-behind caching, the application writes only to the cache. The cache batches and writes the data to the database asynchronously in the background. <br>
+
+This makes writes very fast, but introduces risk. If the cache crashes before flushing, you can lose data. This is best for workloads where occasional data loss is acceptable. <br>
+
+Use this when <b>you need high write throughput</b> and <b> eventual consistency is acceptable.</b> Common in analytics and metrics pipelines.
+
+### Read-Through Caching
+With read-through caching, the cache acts as a smart proxy. Your application never talks to the database directly. On a cache miss, the cache itself fetches from the database, stores the data, and returns it. <br>
+
+This is the read equivalent of write-through. In both patterns, the cache acts as an intermediary that handles database operations. Read-through manages reads, write-through manages writes. Systems often combine both patterns.<br>
+
+This centralizes caching logic but adds complexity and usually requires a specialized caching library or service. It is less common in practice than cache-aside. <br>
+
+CDNs are a form of read-through cache. When a CDN gets a cache miss, it fetches from your origin server, caches the result, and returns it. But for application-level caching with Redis, cache-aside is far more common. <br>
+
+Generally speaking, there are very few reasons to propose this pattern in system design interviews unless you're discussing CDNs or similar infrastructure.
