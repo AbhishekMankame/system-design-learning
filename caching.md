@@ -99,4 +99,12 @@ Very Very Important Note: <b> If you only remember one caching pattern for inter
 ### Write-Through Caching
 With write-through caching, the application writes only to the cache. The cache then synchronously writes to the database before returning to the application. The write operation does not complete until both the cache and database are updated.<br>
 
-In practice, this requires a cache implementation that supports write-through, like a caching library with a data store plugin. Where you write to the cache, the library handles calling your database write logic before acknowledging the write. Redis itself does not natively support write through, so you need application code or a framework to implement this pattern.
+In practice, this requires a cache implementation that supports write-through, like a caching library with a data store plugin. Where you write to the cache, the library handles calling your database write logic before acknowledging the write. Redis itself does not natively support write through, so you need application code or a framework to implement this pattern.<br>
+
+The tradeoff is slower writes because the application must wait for both the cache update and the database write to complete. Write-through can also pollute cache with data that may never be read again.<br>
+
+Write through still suffers from the dual-write problem. If the cache update succeeds but the database write fails, or vice-versa, the systems can end up inconsistent. You need retry logic, error handling, or eventually accept that perfect consistency is difficult without distributed transactions. <br>
+
+In system design interviews, write-through is less common than cache-aside because it requires specialized caching infrastructure and still has consistency edge cases. <br>
+
+Use this when <b>reads must always return fresh data</b> and your system can tolerate slightly slower writes.
