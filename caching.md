@@ -162,3 +162,14 @@ For example, imagine your system caches the homepage feed with a TTL of 60 secon
 How to handle it:
 - <b> Request coalescing (single fault):</b> Allow only one request to rebuild the cache while others wait for the result. This is the most effective solution.
 - <b> Cache warming: </b> Refresh popular keys proactively before they expire. This only helps when using TTL-based expiration. If you invalidate cache on writes instead, warming does not prevent stampedes.
+
+## Cache Consistency
+Cache consistency problems are some of the most commonly discussed in system design interviews. They happen when the cache and database return different values for the same data. This is common because most systems read from the cache but write to the database first. That creates a window where the cache still holds stale data.<br>
+
+For example, if a user updates their profile picture, the new value is written to the database but the old value might still be in the cache. Other users may see the outdated profile picture until the cache eventually refreshes. <br>
+
+There is no perfect solution. You choose a stratergy based on how fresh the data must be.<br>
+
+How to handle it:
+- <b>Cache invalidation on writes:</b> Delete the cache entry after updating the database so it gets repopulated with fresh data.
+- <b>Short TTLs for stale tolerance:</b> Let slightly stale data live temporarily if eventual consistency is acceptable.
