@@ -187,3 +187,15 @@ How to handle it:
 <pre>
 Hot key scenarios in distributed caches is not limited to just caches. It is a common problem in distributed systems when a millions of users simultaneously request the same viral content, traditional caching assumptions break down.
 </pre>
+
+## Caching in System Design Interviews
+Caching comes up in nearly every system design interview, so it's important to know when to bring it up and how to walk through it systematically.
+
+### When to Bring Up Caching
+Don't jump straight to caching. You need to establish why it's necessary first.<br>
+
+Bring up caching when you identify one of these problems:<br>
+
+Read-heavy workload: "We're serving 10M daily active users, each making 20 requests per day. That's 200M reads hitting the database. Even with indexes, we're looing at 20-50ms per query. A cache drops that to under 2ms and takes most of the load off the database."<br>
+
+Expensive queries: "Computing a user's personalized feed requires joining posts, followers, and like across multiple tables. That query takes 200ms. We can cache the computed feed for 60 seconds and serve it in 1ms from Redis."
