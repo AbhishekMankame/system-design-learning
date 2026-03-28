@@ -173,3 +173,17 @@ There is no perfect solution. You choose a stratergy based on how fresh the data
 How to handle it:
 - <b>Cache invalidation on writes:</b> Delete the cache entry after updating the database so it gets repopulated with fresh data.
 - <b>Short TTLs for stale tolerance:</b> Let slightly stale data live temporarily if eventual consistency is acceptable.
+
+## Hot Keys
+A hot key is a cache entry that receives a huge amount of traffic compared to everything else. Even if the cache hit rate is high, a single hot key can overload one cache node or one Redis shard and become a bottleneck.<br>
+
+For example, if you are building Twitter and everyone is viewing Taylor Swift's profile, the cache key for her user data (user:taylorswift) may receive millions of requests per second. That one key can overload a single Redis node even though everything is working "correctly."<br>
+
+How to handle it:
+- <b>Replicate hot keys:</b> Store the same value on multiple cache nodes and load balance reads across them.
+- <b>Add a local fallback cache:</b> Keep extremely hot values in-process to avoid pounding Redis.
+- <b>Apply rate limiting:</b> Slow down abusive traffic patterns on specific keys.<br>
+
+<pre>
+Hot key scenarios in distributed caches is not limited to just caches. It is a common problem in distributed systems when a millions of users simultaneously request the same viral content, traditional caching assumptions break down.
+</pre>
