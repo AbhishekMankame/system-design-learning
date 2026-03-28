@@ -149,3 +149,16 @@ Because it may evict items that are still hot, it is rarely used in real systems
 TTL is not an eviction policy by itself. Instead, it sets an expiration time for each key and removes entries that are too old. It is often combined with LRU or LFU to balance freshenss and memory usage. <br>
 
 TTL is a must havve when data must eventually refresh, like API responses or sessions tokens.
+
+## Common Cache Problems
+Caching makes system faster, but it also introduces new failure modes. These problems show up in real systems at scale, and interviewers often use them to test whether you understand the trade-offs of caching, not just the benefits. If you bring up caching in an interview, you should also show that you can handle these edge cases.
+
+### Cache Stampede (Thundering Herd)
+A cache stampede happpens when a popular cache entry expires and many requests try to rebuild it at the same time. There is a brief window, even if only a second, where every request misses the cache and goes straight to the database. Instead of one query, you suddenly have hundreds or thousands, which can overload the database.<br>
+
+For example, imagine your system caches the homepage feed with a TTL of 60 seconds. When the cache expires at exactly 12:01:00, every request at that moment misses the cache queries the database. If traffic is high, this spike can overwhelm the database and cause cascading failures.
+<br>
+
+How to handle it:
+- <b> Request coalescing (single fault):</b> Allow only one request to rebuild the cache while others wait for the result. This is the most effective solution.
+- <b> Cache warming: </b> Refresh popular keys proactively before they expire. This only helps when using TTL-based expiration. If you invalidate cache on writes instead, warming does not prevent stampedes.
