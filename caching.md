@@ -238,3 +238,9 @@ Thundering herd: What happens when a popular cache entry and 1000 requests try t
 <pre>
 Don't list every possible problems. Pick one or two that are relevant to the system you're designing and explain how you'd handle them. For staff-level candidates, focus on the important but non-obvious scenarios rather than burning time on things the interviewer can already assume.
 </pre>
+
+## Conclusion
+Caching is what you do when reading from the database is too slow or too expensive. It keeps freqently accessed data in fast memory so you can skip the database entirely for most reads.<br>
+The core trade-off is simple. Caches make reads faster and reduce load on whatever is behind them, but they introduce complexity around staleness and invalidation. Cached data can fall out of sync with the database. Cache failures can crush your database if you're not prepared. Hot keys can create bottlenecks even in distributed caches.<br>
+In interviews, bring up caching after you've identified a database bottleneck. Walk through what you'll cache, which caching pattern you'll use, how you'll handle eviction, and what happens when things go wrong. CDN caching works for static media, and in-process caching can make sense for extremely hot keys.<br>
+Most importantly, don't cache everything. Show you understand when caching is worth the complexity and when a well-indexed database is enough.
