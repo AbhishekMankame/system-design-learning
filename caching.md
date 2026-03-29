@@ -198,4 +198,10 @@ Bring up caching when you identify one of these problems:<br>
 
 Read-heavy workload: "We're serving 10M daily active users, each making 20 requests per day. That's 200M reads hitting the database. Even with indexes, we're looing at 20-50ms per query. A cache drops that to under 2ms and takes most of the load off the database."<br>
 
-Expensive queries: "Computing a user's personalized feed requires joining posts, followers, and like across multiple tables. That query takes 200ms. We can cache the computed feed for 60 seconds and serve it in 1ms from Redis."
+Expensive queries: "Computing a user's personalized feed requires joining posts, followers, and like across multiple tables. That query takes 200ms. We can cache the computed feed for 60 seconds and serve it in 1ms from Redis."<br>
+
+High database CPU: "Our database CPU is hitting 80% during peak hours just serving reads. The same queries run over and over. Caching the hot queries will cut the database load by 70-80%." <br>
+
+Latency requirements: "We need sub-10ms response times for the API. Database queries are taking 30-50ms. We have to cache." <br>
+
+The pattern is simple. Identify tghe performance problem, quantify it with rough numbers, and explain how caching solves it."
