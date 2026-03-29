@@ -205,3 +205,18 @@ High database CPU: "Our database CPU is hitting 80% during peak hours just servi
 Latency requirements: "We need sub-10ms response times for the API. Database queries are taking 30-50ms. We have to cache." <br>
 
 The pattern is simple. Identify tghe performance problem, quantify it with rough numbers, and explain how caching solves it."
+
+## How to Introduce Caching
+Once you've establish the need for caching, walk through your caching stratergy systematically:
+
+1. <b>Indentify the bottleneck</b><br>
+Start by pointing to the specific problem caching will solve. Is it database load? Query latency? Expensive computations? Be specific about what's slow and why.<br>
+"User profile queries are hitting the database 500 times per second during peak hours. Each query takes 30ms. That's our bottleneck."
+
+2. <b>Decide what to cache</b><br>
+Not everything should be cached. Focus on data that is read frequently, doesn't change often, and is expensive to fetch or compute.<br>
+"We'll cache user profiles since they're read on every page load but only updated when users edit their settings. We'll also cache the trending posts feed since it's computed from expensive aggregations but only needs to refresh every minute."<br>
+Think about cache keys. How will you look up cached data? For user profiles, the key might be `user:123:profile`. For trending posts, it could be `trending:posts:global`.
+
+3. <b>Choose your cache architecture</b><br>
+Pick a caching pattern that matches your consistency requirements. Write-through makes sense when you need strong consistency. Write-behind works for high-volume writes where you can tolerate some risk.<br>
