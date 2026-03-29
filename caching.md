@@ -220,3 +220,21 @@ Think about cache keys. How will you look up cached data? For user profiles, the
 
 3. <b>Choose your cache architecture</b><br>
 Pick a caching pattern that matches your consistency requirements. Write-through makes sense when you need strong consistency. Write-behind works for high-volume writes where you can tolerate some risk.<br>
+"I'll use cache-aside. On a read, we check Redis first. If it's there, return it. If not, query the database, store the result in Redis, and return it."<br>
+If you're dealing with static content like images or videos, mention CDN caching. If you have extremely hot keys that get hammered, mention in-process caching as an optimization layer.
+
+4. <b>Set an eviction policy</b><br>
+Explain how you'll manage cache size. LRU is the safe default answer. TTL is essential for preventing stale data.<br>
+"We'll use LRU eviction with Redis and set a TTL of 10 minutes on user profiles. That keeps the cache from growing unbounded while ensuring profiles don't get too stale. If a user updates their profile, we'll invalidate cache entry immediately."
+
+5. <b>Address the downsides</b><br>
+Caching introduces complexity. Show you've thought about the trade-offs.<br>
+Cache invalidation: How do you keep cached data fresh? Do you invalidate on writes, rely on TTL, or accpet eventual consistency?<br>
+"When a user updates the profile, we'll delete the cache entry so the next read fetches fresh data from the database."<br>
+Cache failures: What happens if Redis goes down? Will your database get crushed by the sudden traffic spike?<br>
+"If Redis is unavailable, requests will fall back to the database. We'll add circuit breakers so we don't overwhelm the database with a stampede. We might also consider keeping a small in-process cache as a last-resort layer."<br>
+Thundering herd: What happens when a popular cache entry and 1000 requests try to fetch it simultaneously?<br>
+"For extremely popular keys, we can use probabilistic early expirtion or request coaleasing so only one request fetches from the database while others wait for the result."<br>
+<pre>
+Don't list every possible problems. Pick one or two that are relevant to the system you're designing and explain how you'd handle them. For staff-level candidates, focus on the important but non-obvious scenarios rather than burning time on things the interviewer can already assume.
+</pre>
