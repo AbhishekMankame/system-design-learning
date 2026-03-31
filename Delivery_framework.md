@@ -29,3 +29,20 @@ A cache meanwhile might have requirements like:
 <pre>
 Keep your requirements targeted! The main objective in the remainging part of the interview is to develop a system that meets the requirements you've identified -- so it's crucial to be stratergic in your prioritization. Many of these systems have hundreds of features, but it's your job to identify and prioritization. Many of these systems have hundreds of features, but it's your job to identify and prioritize the top 3. Having a long list of requirements will hurt you more than it will help you and many top FAANGs directly evaluate you on your ability to focus on what mattenrs.
 </pre>
+
+2. Non-functional Requirements<br>
+Non-functional requirements are statements about the system qualitites that are important to your users. These can be phrased as "The system should be able to..." or "The system should be..." statements.<br>
+
+For example, if you were designing a system like Twitter, you might have the following non-functional requirements:
+- The system should be highly available, prioritizing availability over consistency.
+- The system should be able to scale to support 100M+ DAU (Daily Active Users)
+- The system should be low latency, rendering feeds in under 200ms
+<pre>
+It's important that non-functional requirements are put in the context of the system and, where possible, are quantified. For example, "the system should be low latency" is obvious and not very meaningful - nearly all systems should be low latency. "The system should have low latency search, < 500ms," is much more useful as it identifies the part of the system that most needs to be low latency and provides a target.
+</pre>
+
+Coming up with non-functional requirements can be challenging, especially if you're not familiar with the domain. Here is a checklikst of things to consider that might help you identify the most important non-functional requirements for your system. You'll want to identify the top 3-5 that are most relevant to your system.
+1. CAP Theorem: Should your system prioritize consistency or availability? Note, partition tolerance is a given in distributed systems.
+2. Environment Constraints: Are there any constraints on the environment in which your system will run? For example, are you running on a mobile device with limited battery life? Running on device with limited memory bandwidth (e.g., streaming video on 3G)?
+3. Scalability: All systems need to scale, but does the system have unique scaling requirements? For example, does it have bursty traffic at a specific time of day? Are there events, like events, like holidays, that will cause a significant increase in traffic? Also consider the read vs write ratio here. Does your system need to scale reads or write more?
+4. Latency: How quickly does the system need to respond to user requests? Specifically consider any requests that require meaningful computation. For example, low latency search when desinging Yelp.
