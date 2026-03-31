@@ -46,3 +46,7 @@ Coming up with non-functional requirements can be challenging, especially if you
 2. Environment Constraints: Are there any constraints on the environment in which your system will run? For example, are you running on a mobile device with limited battery life? Running on device with limited memory bandwidth (e.g., streaming video on 3G)?
 3. Scalability: All systems need to scale, but does the system have unique scaling requirements? For example, does it have bursty traffic at a specific time of day? Are there events, like events, like holidays, that will cause a significant increase in traffic? Also consider the read vs write ratio here. Does your system need to scale reads or write more?
 4. Latency: How quickly does the system need to respond to user requests? Specifically consider any requests that require meaningful computation. For example, low latency search when desinging Yelp.
+5. Durability: How important is it that the data in your system is not lost? For example, a social network might be able to tolerate some data loss, but a banking system cannot.
+6. Security: How secure does the system need to be? Consider data protection, access control, and compilance with regulations.
+7. Fault Tolerance: How well does the system need to be? Consider data protection, access control, and compilance with regualtions.
+8. Compilance: Are there legal or regulatory requirements the system needs to meet? Consider industry standards, data protection laws, and other regulations.
