@@ -14,6 +14,14 @@ Consider an orders table with 500 million rows and 2 TB of data. A query for las
 
 Partitioning solves this problem by breaking that large table into smaller partitions. The data does not move off the machine. It is simply divided into logical pieces the database can manage seperately. Now a query for last month's orders only scans the relevant partition instead of the full table.<br>
 
-There are tow common types of partitioning:
+There are two common types of partitioning:
 1. Horizontal Partitioning: Split rows across partitions. For example, one partition per year of orders. Same columns, fewer rows per partition.
 2. Vertical Partitioning: Split columns across partitions. For example, keep frequently accessed columns in one partition and large or rarely used columns in another. Same rows, fewer columns per partition.
+
+## What is Sharding?
+Sharding is horizontal partitioning across multiple machines. Each shard holds a subset of the data, and together the shards make up the full dataset. Unlike partitioning, which stays within a single database instance, sharding spreads the load across multiple independent databases.
+
+## How to shard your data?
+When you decide to shard, you need to make two decisions that work together:
+1. What to shard by: The field or column you use to split the data. It defines how the data is grouped.
+2. How to distribute it: The rule for assigning those groups to shards. It defines how the data is distributed across machines.
