@@ -10,7 +10,7 @@ Welcome to my little corner of the internet where I try to make sense of all thi
 This is a work-in-progress, so expect it to grow and evolve-kind of like a system under constant load!!!
 
 
-### Key concepts of HLD:
+## Key concepts of HLD:
 
 - System: A system is a collection of components working together to perform a specific function.
 For example Facebook is a system that lets people connect and share.
