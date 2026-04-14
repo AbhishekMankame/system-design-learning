@@ -1,6 +1,7 @@
 # 12-Weeks Google System Design Prep Plan
 
 Target:
+- Maang/PBC
 - Google SDE 2 (L4) - Pass with confidence
 - Google SDE 3 (L5) - Strong signal on architecture & tradeoffs
 <br>
