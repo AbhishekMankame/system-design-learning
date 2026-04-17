@@ -25,3 +25,7 @@ Sharding is horizontal partitioning across multiple machines. Each shard holds a
 When you decide to shard, you need to make two decisions that work together:
 1. What to shard by: The field or column you use to split the data. It defines how the data is grouped.
 2. How to distribute it: The rule for assigning those groups to shards. It defines how the data is distributed across machines.
+
+### Choosing Your Shard Key
+In an interview, a common statement is "I'm going to shard by [field]". The key is knowing what field to use as your shard key and why.<br>
+Bad shard key leads to uneven data distribution, hot spots where one shard gets pounded while other sit idle, and queries that have to hit every shard to find what they need. A good shard key distributes data evenly, aligns with your query patterns, and scales as your system grows.
