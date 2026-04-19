@@ -1,0 +1,2 @@
+# Redis
+System designs can involve a dizzying array of different technologies, concepts and patterns, but one technology (arguably) stands above the rest in terms of its versatility: Redis. This versatility is important in an interview setting becaue it allows you to go deep. Instead of learning about dozens of different technologies. you can learn a few useful ones and learn them deeply, which magnifies the chances that you're able to get to the level your interviewer is expecting.
