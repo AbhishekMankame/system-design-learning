@@ -1,0 +1,24 @@
+distributed-crawler/
+│
+├── docker-compose.yml        # Orchestration
+│
+├── nginx/                    # Load balancer
+│   └── nginx.conf
+│
+├── seed_service/             # Seed ingestion
+│   ├── app.py
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── frontier_service/         # URL frontier & dedupe
+│   ├── app.py
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── worker_service/           # Async crawling
+│   ├── worker.py
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+└── shared/
+    └── config.py             # Shared config variables

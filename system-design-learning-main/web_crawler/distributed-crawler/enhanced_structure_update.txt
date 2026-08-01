@@ -1,0 +1,33 @@
+distributed-crawler/
+│
+├── docker-compose.yml        # Orchestrates Redis, services, and NGINX LB
+│
+├── nginx/                    # Load balancer
+│   └── nginx.conf            # Routes /seed → Seed Service, /frontier → Frontier Service
+│
+├── seed_service/             # Accepts seed URLs and pushes to queue
+│   ├── app.py                # FastAPI app
+│   ├── requirements.txt      # Dependencies
+│   │   fastapi
+│   │   uvicorn
+│   │   redis
+│   └── Dockerfile            # Container setup
+│
+├── frontier_service/         # Manages URL queue & dedupe
+│   ├── app.py                # FastAPI app
+│   ├── requirements.txt      # Dependencies
+│   │   fastapi
+│   │   uvicorn
+│   │   redis
+│   └── Dockerfile            # Container setup
+│
+├── worker_service/           # Async crawler + parser + storage
+│   ├── worker.py             # Async Python crawler
+│   ├── requirements.txt      # Dependencies
+│   │   aiohttp
+│   │   redis
+│   │   beautifulsoup4
+│   └── Dockerfile            # Container setup
+│
+└── shared/
+    └── config.py             # Shared variables (Redis host, ports, crawl delay, storage path)
