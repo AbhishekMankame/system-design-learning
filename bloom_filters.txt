@@ -1,0 +1,21 @@
+## Bloom Filters
+A Bloom filter is a probabilistic data structure that answers a very specific question - have I seen this thing before? - while using almost no memory.
+
+There is a trade-off, though-bloom filter can be 'wrong'. A Bloom filter will never tell you something is absent when it is actually present, but it might occasionally claim something exists when it does not.
+
+### Why Bloom Filter Matter?
+Say, you are building a recommendation engine for a content platform with millions of users. Each user has seen thousands of articles. When generating recommendations, you need to filter out articles the user has already seen.
+Storing every article ID for every user in a hash set would consume enormous amount of memory. 
+
+Let's crunch the numbers...
+
+Assumptions:
+- 10 million active users
+- Each user has seen an average of 5000 articles
+- Article IDs are 64-bit integers (8 bytes each)
+
+Storing article IDs directly in a hash set:
+Per user storage: 5000 article IDs * 8 bytes = 40000 bytes = 40 KB
+
+Hash set overhead (typical 2x for load factor + pointers): 40 KB * 2 = 80KB per user
+Total for all users: 80KB * 10000000 users = 800 GB
