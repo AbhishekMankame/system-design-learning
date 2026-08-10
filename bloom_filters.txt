@@ -19,3 +19,11 @@ Per user storage: 5000 article IDs * 8 bytes = 40000 bytes = 40 KB
 
 Hash set overhead (typical 2x for load factor + pointers): 40 KB * 2 = 80KB per user
 Total for all users: 80KB * 10000000 users = 800 GB
+
+That is 800 GB of RAM just for tracking which articles users have seen. Even with a more optimistic 1.5x overhead factor, you are looking at 600 GB.
+
+Bloom Filter will take up about ~60 GB (one-tenth) of space by not storing actual article IDs, but rather storing the existence in a compact bit array that can answer the question: "has this user probably seen this article?"
+
+If the answer is "no", you can confidently recommend it. If the answer is "yes", you either skip it or do a more expensive lookup to confirm. In practice, this cuts memory usage by more than 90% without slowing down recommendation generation.
+
+Variations of this idea show up in many large systems - Medium uses it in recommendations, Chrome uses it to flag unsafe URLs, and databases rely on Bloom filters to avoid unnecessary disk reads.
