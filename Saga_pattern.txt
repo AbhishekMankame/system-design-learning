@@ -1,0 +1,6 @@
+### Saga Pattern
+
+The Saga Pattern is a way to handle distributed transactions across multiple microservices without using one huge database transaction.
+
+The key idea is:
+Break one large business transaction into multiple local transactions, and if something fails, execute compensating transactions to undo the previous successful step.
