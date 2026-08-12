@@ -10,3 +10,8 @@ Saga design pattern is used to manage distributed transactions across multiple m
 - If a transaction step fails, compensating actions are executed to undo previously completed operations.
 
 Eg: In an e-commerce application, placing an order involves the Order Service, Payment Service, and Inventory service. If payment fails after inventory is reserved, a compensating transaction releases the reserved inventory and cancels the order.
+
+### Distributed Transactions
+A Distributed Transaction is a transaction that involves multiple systems or databases working together to complete a single task. All participating systems must successfully complete their part for the transaction to be considered successful.
+
+Eg: In an online shopping system, the back processes payment, the warehouse updates stock, and the shipping service prepares delivery. If any step fails, the entire transaction may need to be rolled back.
