@@ -1,0 +1,9 @@
+// Consistent Hashing
+-> Consistent hashing is a technique used in distributed systems and load balancing to distribute data or requests across multiple servers efficiently. It reduces the amount of remapping (reharsing) needed when servers are added or removed, improving scalability and stability.
+
+- Servers and requests are mapped onto a virtual hash ring, where each request is assigned to the nearest server in the clockwise direction.
+- When servers are added or removed, only a small portion of requests are redistributed, improving scalability and stability.
+
+Example: In a caching system (like Redis cluster), if a new server is added, only some keys move to the new server instead of reassigning all keys, which improves performance and reduces downtime.
+
+Note: In consistent hashing, a request is mapped to the first server encountered in the clockwise direction on the hash ring after hashing the request key.
