@@ -7,3 +7,8 @@
 Example: In a caching system (like Redis cluster), if a new server is added, only some keys move to the new server instead of reassigning all keys, which improves performance and reduces downtime.
 
 Note: In consistent hashing, a request is mapped to the first server encountered in the clockwise direction on the hash ring after hashing the request key.
+
+### How Requests are assigned to servers??
+-> In consistent hashing, both servers and requests are placed on a virtual rings using a hash function. For any incoming request, the system moves clockwise on the ring and assigns the request to the first server it encounters. This ensures a balanced and predictable distribution of requets.
+
+Example: Imagine a hash ring with three servers placed at different positions: Node 1, Node 2 and Node 5. If a request is hashed to a position between Node 1 and Node 2, it will be handled by Node 2 (the next server in the clockwise direction). If Node 2 goes down, the same request will now be handled by Node 5, minimizing redistribution of other requests.
