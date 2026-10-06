@@ -12,3 +12,9 @@ Note: In consistent hashing, a request is mapped to the first server encountered
 -> In consistent hashing, both servers and requests are placed on a virtual rings using a hash function. For any incoming request, the system moves clockwise on the ring and assigns the request to the first server it encounters. This ensures a balanced and predictable distribution of requets.
 
 Example: Imagine a hash ring with three servers placed at different positions: Node 1, Node 2 and Node 5. If a request is hashed to a position between Node 1 and Node 2, it will be handled by Node 2 (the next server in the clockwise direction). If Node 2 goes down, the same request will now be handled by Node 5, minimizing redistribution of other requests.
+
+## Issues with Traditional Hashing Methods
+- Uneven Distribution of Data: Data is not evenly spread across servers, causing some servers to be overloaded while others remain underutilized.
+- Scalability Problems: When servers are added or removed, most of the data needs to be rehashed and redistributed, leading to delays and inefficiency.
+- Poor Node Failure Handling: If a server fails, its data becomes unavailable until it is reassigned or the server recovers.
+- High Rehashing Overhead: System changes require rehashing of most keys, increasing computational cost and system load.
