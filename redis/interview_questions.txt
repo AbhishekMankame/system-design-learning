@@ -1,0 +1,9 @@
+#1. What is Redis, and where would you use it?
+- Redis is an in-memory data-structure server commonly used as a cache, session store, rate limiter, leaderboard, queue-like component and low-latency data store. Applications access values by key and use commands suited to the value's data type.
+Interview angle: Do not describe Redis only as a key-value cache. Explain the workload, data structure, durability and failure requirements.
+Example: Use a Redis String for short-lived OTP, a Hash for a user session, a Sorted Set for a leaderboard or a Stream for durable event processing.
+
+#2: Why is Redis fast? Does in-memory mean data is never perished?
+- Redis keeps its active dataset in memory, avoiding disk access for most normal reads and writes. Its compact data structures and efficient command execution also help. In-memory does not mean persistence is impossible. Redis supports RDB snapshots and AOF logging. Persistence settings determine recovery and possible data loss.
+Interview angle: Explain the latency-versus-durability trade-off. Redis is not automatically a replacement for a durable relational database.
+Example: Use Redis a cache when the source of truth remains PostgreSQL; use persistence if Redis stores that most survive restarts.
