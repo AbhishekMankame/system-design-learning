@@ -7,3 +7,13 @@ Example: Use a Redis String for short-lived OTP, a Hash for a user session, a So
 - Redis keeps its active dataset in memory, avoiding disk access for most normal reads and writes. Its compact data structures and efficient command execution also help. In-memory does not mean persistence is impossible. Redis supports RDB snapshots and AOF logging. Persistence settings determine recovery and possible data loss.
 Interview angle: Explain the latency-versus-durability trade-off. Redis is not automatically a replacement for a durable relational database.
 Example: Use Redis a cache when the source of truth remains PostgreSQL; use persistence if Redis stores that most survive restarts.
+
+#3: What Redis data type should you know, and when would you use each?
+- Strings: counters, tokens and simple values. Lists: ordered sequences and simple queues. Sets: unique membership. Sorted Sets: members with scores, rankings and time-ordered indexes. Hashes: fields grouped under one key, such as a session or profile. Streams: append-only event logs with consumer groups. Bitmaps, HyperLogLogs and geospatial indexes solve specialised problems.
+Interview angle: Choose a type based on operations and access patterns, not just how the data looks in JSON.
+Example: Use ZADD/ZRANGE for a leaderboard; HSET/HGET for session fields; SADD/SISMEMBER for unique likes.
+
+#4: What are common Redis String commands?
+- SET writes a value; GET reads it; MGET/MSET handle multiple keys; INCR/DECR update integer counters automatically; SETEX or SET with EX/PX adds an expiry; APPEND adds to a string. Commands and options vary slightly by version.
+Interview angle: Know that INCR is atomic as one Redis command, unlike a client-side GET followed by SET which can lose concurrent updates.
+Example: SET otp: 123456 482913 EX 300 stores as OTP for five minutes. INCR page: views increments a counter.
