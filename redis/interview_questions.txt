@@ -17,3 +17,8 @@ Example: Use ZADD/ZRANGE for a leaderboard; HSET/HGET for session fields; SADD/S
 - SET writes a value; GET reads it; MGET/MSET handle multiple keys; INCR/DECR update integer counters automatically; SETEX or SET with EX/PX adds an expiry; APPEND adds to a string. Commands and options vary slightly by version.
 Interview angle: Know that INCR is atomic as one Redis command, unlike a client-side GET followed by SET which can lose concurrent updates.
 Example: SET otp: 123456 482913 EX 300 stores as OTP for five minutes. INCR page: views increments a counter.
+
+#5: What is the difference between a Redis Hash and storing JSON in a String?
+- A Hash stores individual fields and lets you read or update selected fields with HGET/HSET/HMGET. A String can store a serialized JSON document, but updating one field usually means reading, parsing, modifying and rewriting the whole document unless you use a Redis JSON module/feature.
+Interview angle: Consider update granularity, data size, query needs and the modules supported by the deployment.
+Example: Use a Hash for a session with a few independent update fields. Use JSON when the application treats the document as a whole or needs JSON path features from a supported module.
