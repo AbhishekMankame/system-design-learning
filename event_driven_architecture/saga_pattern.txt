@@ -1,0 +1,3 @@
+## What is Saga Pattern in Microservices?
+- The Saga Pattern is a design pattern used to manage transactions that involve multiple icroservices.
+- It ensures that if one service fails during a multi-step business operation, the system can recover by executing compensating transactions to undo the effect of previous successful steps.
